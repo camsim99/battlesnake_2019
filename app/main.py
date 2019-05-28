@@ -59,8 +59,7 @@ def move():
 			return MoveResponse(direction)
 	safe_food = []
 	foods = find_closest_food(data, num_board, ghost_board)
-	foods = [food for food in foods if food['slack'] >= 0 and food['dist'] != -1]
-	safe_food = [f for f in foods if check_easy(ghost_board, head, f, enemy_data)] 
+	safe_foods = [food for food in foods if food['slack'] >= 0 and food['dist'] != -1]
 	print('safe foods:')
 	print(safe_food)
 	print ('-' * 10)
@@ -249,36 +248,6 @@ def box_info(num_board):
 				info[key] = 1
 	return info
 
-# check if food is safe
-def check_easy(ghost_board,head, food, enemies):
-<<<<<<< HEAD
-	our_dist = len(bfs(head,food,ghost_board))
-<<<<<<< HEAD
-	for e in enmies:
-=======
-	our_dist = len(bfs(ghost_board,head,food))
-	for e in enemies:
-<<<<<<< HEAD
->>>>>>> 52b9242... fixed typo
-		e_dist = len(bfs(ghost_board,e['head'],food))
-		# if they are larger 
-=======
-		e_dist = len(bfs(ghost_board, e['head'],food))
-		# if they are closer
->>>>>>> a3465b5... removed globals
-		if e_dist < our_dist:
-=======
-	for e in enemies:
-		# if they are larger 
-		if len(bfs, e['head'],food,ghost_board) < our_dist:
->>>>>>> 3babf11... fixed typo
-			return False
-		# if same distance check who is bigger 
-		if e_dist == our_dist and e['bigger']:
-			return False
-	return True
-
-"""
 	Engine for handling nearby enemies
 	Logic:
 	0. if we can go only 1 place, return that.
